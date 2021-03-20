@@ -5,7 +5,7 @@ fruits = ['banana', 'orange', 'mango', 'lemon']                     # list of fr
 vegetables = ['Tomato', 'Potato', 'Cabbage','Onion', 'Carrot']      # list of vegetables
 animal_products = ['milk', 'meat', 'butter', 'yoghurt']             # list of animal products
 web_techs = ['HTML', 'CSS', 'JS', 'React','Redux', 'Node', 'MongDB'] # list of web technologies
-countries = ['Finland', 'Estonia', 'Denmark', 'Sweden', 'Norway']
+countries = ['Kenya', 'Ethiopia', 'Uganda', 'Tanzania', 'Rwanda']
 
 # Print the lists and it length
 print('Fruits:', fruits)
@@ -27,11 +27,14 @@ second_fruit = fruits[1]
 print(second_fruit)     # orange
 last_fruit = fruits[3]
 print(last_fruit) # lemon
+
 # Last index
 last_index = len(fruits) - 1
+print(last_index)    # 3
 last_fruit = fruits[last_index]
+print(last_fruit)   # lemon
 
-# Accessing itmes
+# Accessing items
 fruits = ['banana', 'orange', 'mango', 'lemon'] 
 last_fruit = fruits[-1]
 second_last = fruits[-2]
@@ -44,6 +47,7 @@ all_fruits = fruits[0:4] # it returns all the fruits
 # this is also give the same result as the above
 all_fruits = fruits[0:] # if we don't set where to stop it takes all the rest
 orange_and_mango = fruits[1:3] # it does not include the end index
+print(orange_and_mango)
 orange_mango_lemon = fruits[1:]
 
 fruits = ['banana', 'orange', 'mango', 'lemon'] 
@@ -58,7 +62,7 @@ fruits[0] = 'Avocado'
 print(fruits)       #  ['avocado', 'orange', 'mango', 'lemon']
 fruits[1] = 'apple'
 print(fruits)       #  ['avocado', 'apple', 'mango', 'lemon']
-last_index = len(fruits)
+last_index = len(fruits)-1
 fruits[last_index] = 'lime'
 print(fruits)        #  ['avocado', 'apple', 'mango', 'lime']
 
@@ -80,7 +84,7 @@ print(fruits)
 fruits = ['banana', 'orange', 'mango', 'lemon']
 fruits.insert(2, 'apple') # insert apple between orange and mango
 print(fruits)           # ['banana', 'orange', 'apple', 'mango', 'lemon']
-fruits.list(3, 'lime')   # ['banana', 'orange', 'apple', 'mango', 'lime','lemon',]
+fruits.insert(3, 'lime')   # ['banana', 'orange', 'apple', 'mango', 'lime','lemon',]
 print(fruits)
 
 # remove
@@ -92,10 +96,10 @@ print(fruits)  # ['orange', 'mango']
 
 # pop
 fruits = ['banana', 'orange', 'mango', 'lemon']
-fruits.remove()     
+fruits.remove('lemon')     
 print(fruits)       # ['banana', 'orange', 'mango']
 
-fruits.remove(0)     
+fruits.remove(fruits[0])     
 print(fruits)       # ['orange', 'mango'] 
 
 # del 
@@ -106,20 +110,20 @@ print(fruits)       # ['orange', 'mango', 'lemon']
 del fruits[1]     
 print(fruits)       # ['orange', 'lemon']
 del fruits
-print(fruits)       # This should give: NameError: name 'fruits' is not defined
+#print(fruits)       # This should give: NameError: name 'fruits' is not defined
 
 # clear
 fruits = ['banana', 'orange', 'mango', 'lemon']
 fruits.clear()     
 print(fruits)       # []
 
-# copying a lits
+# copying a lists
 
 fruits = ['banana', 'orange', 'mango', 'lemon']
 fruits_copy = fruits.copy()     
 print(fruits_copy)       # ['banana', 'orange', 'mango', 'lemon']
 
-# join
+# join // concatenate  // +
 positive_numbers = [1, 2, 3,4,5]
 zero = [0]
 negative_numbers = [-5,-4,-3,-2,-1]
@@ -128,24 +132,25 @@ print(integers)
 fruits = ['banana', 'orange', 'mango', 'lemon']
 vegetables = ['Tomato', 'Potato', 'Cabbage','Onion', 'Carrot'] 
 fruits_and_vegetables = fruits + vegetables
-print(fruits_and_vegetables )
+print(fruits_and_vegetables)
 
 # join with extend
 num1 = [0, 1, 2, 3]
 num2= [4, 5,6]
-num1.extend(num2)
+num1.extend(num2)   # [0, 1, 2, 3, 4, 5, 6]
 print('Numbers:', num1)
 negative_numbers = [-5,-4,-3,-2,-1]
 positive_numbers = [1, 2, 3,4,5]
 zero = [0]
 
-negative_numbers.extend(zero)
-negative_numbers.extend(positive_numbers)
-print('Integers:', negative_numbers)
+negative_numbers.extend(zero)  # [-5, -4, -3, -2, -1, 0]
+negative_numbers.extend(positive_numbers) 
+print('Integers:', negative_numbers) # [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
+
 fruits = ['banana', 'orange', 'mango', 'lemon']
 vegetables = ['Tomato', 'Potato', 'Cabbage','Onion', 'Carrot'] 
 fruits.extend(vegetables)
-print('Fruits and vegetables:', fruits )
+print('Fruits and vegetables:', fruits)
 
 # count
 fruits = ['banana', 'orange', 'mango', 'lemon']
@@ -157,23 +162,24 @@ print(ages.count(24))           # 3
 fruits = ['banana', 'orange', 'mango', 'lemon']
 print(fruits.index('orange'))   # 1
 ages = [22, 19, 24, 25, 26, 24, 25, 24]
-print(ages.index(24)) 
+print(ages.index(24))   # 2
+
 # Reverse
 fruits = ['banana', 'orange', 'mango', 'lemon']
 fruits.reverse()
-print(fruits.reverse())  
+print(fruits.reverse())  # None
 ages = [22, 19, 24, 25, 26, 24, 25, 24]
 ages.reverse()
-print(ages.reverse()) 
+print(ages.reverse())   # None
 
 # sort
 fruits = ['banana', 'orange', 'mango', 'lemon']
 fruits.sort()
-print(fruits) 
-fruits.sort(reverse=True)
-print(fruits)
+print(fruits)   # ['banana', 'lemon', 'mango', 'orange'] ; alphabetically
+fruits.sort(reverse=True)  
+print(fruits)   # ['orange', 'mango', 'lemon', 'banana']
 ages = [22, 19, 24, 25, 26, 24, 25, 24]
 ages.sort()
-print(ages) 
+print(ages)   # [19, 22, 24, 24, 24, 25, 25, 26] ; in ascending order by default
 ages.sort(reverse=True)
-print(ages) 
+print(ages)  # [26, 25, 25, 24, 24, 24, 22, 19] ; descending order

@@ -1,0 +1,165 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Mar  7 20:42:07 2021
+
+@author: rancy
+"""
+
+# =============================================================================
+# ## Python PIP - Python Package Manager
+
+### What is PIP ?
+#PIP stands for Preferred installer program. We use _pip_ to install different python packages.
+#Package is a python module that can contain one or more modules or other packages. A module or modules that we can install to our application is a package.
+#In programming, we do not have to write every utility program, instead we install packages and import them to our applications.
+# =============================================================================
+
+### Installing PIP
+
+#pip install pip ; already installed
+
+### Installing packages using pip
+
+#pip install numpy ;  already installed
+'''
+import numpy as np
+
+np.version.version
+lst = [1, 2, 3,4, 5]
+np_arr = np.array(lst)
+np_arr
+len(np_arr)
+np_arr * 2
+np_arr  + 2
+'''
+
+## Pandas
+
+# import pandas as pd
+'''
+import webbrowser # web browser module to open websites
+
+# list of urls: python
+url_lists = [
+    'http://www.python.org',
+]
+
+# opens the above list of websites in a different tab
+for url in url_lists:
+    webbrowser.open_new_tab(url)
+'''
+
+### Uninstalling Packages
+
+# If you do not like to keep the installed packages, you can remove them.
+
+## pip uninstall packagename
+### List of Packages
+
+#To see the installed packages on our machine. We can use pip followed by list.
+
+# pip list
+
+### Show Package
+
+#To show information about a package
+
+# pip show packagename
+
+# If we want even more details, just add --verbose
+
+# pip show --verbose pandas
+
+### PIP Freeze ; Generate output suitable for a requirements file.
+
+## pip freeze
+
+# The pip freeze gave us the packages used, installed and their version. We use it with requirements.txt file for deployment.
+
+### Reading from URL
+# Sometimes, we would like to read from a website using url or from an API.
+# API stands for Application Program Interface. It is a means to exchange structured data between servers primarily as json data. To open a network connection, we need a package called _requests_ - it allows to open a network connection and to implement CRUD(create, read, update and delete) operations. In this section, we will cover only reading part of a CRUD.
+
+#pip install requests
+'''
+import requests # importing the request module
+url = 'https://restcountries.eu/rest/v2/all'  # countries api
+response = requests.get(url)  # opening a network and fetching a data
+print(response) # response object
+print(response.status_code)  # status code, success:200
+countries = response.json()
+print(countries[:1])  # we sliced only the first country, remove the slicing to see all countries
+'''
+
+# We use _json()_ method from response object, if the we are fetching JSON data. For txt, html, xml and other file formats we can use _text_.
+
+### Creating a Package  ; ensure you've __init__.py file
+
+'''
+requests : Will allow you to send HTTP/1.1 requests and many more. 
+beautifulsoup4 : Used for parsing HTML/XML to extract data out of HTML and XML files. 
+operator : Exports a set of efficient functions corresponding to the intrinsic operators. 
+collections : Implements high-performance container datatypes.
+'''
+
+## Exercises: Day 20
+
+#1. Read this url and find the 10 most frequent words. Romeo_and_juliet = 'http://www.gutenberg.org/files/1112/1112.txt'
+# list of urls: python
+import requests
+from bs4 import BeautifulSoup
+from collections import Counter
+from string import punctuation
+
+r = requests.get("http://www.gutenberg.org/files/1112/1112.txt")
+soup = BeautifulSoup(r.content, features="html5lib")
+text = (''.join(s.findAll(text=True))for s in soup)
+c = Counter((x.rstrip(punctuation).lower() for y in text for x in y.split()))
+print (c.most_common()) # prints most common words staring at most common.
+#print ([x for x in c if c.get(x) > 5]) # words appearing more than 5 times
+
+import requests
+import re
+# 1
+Romeo_and_juliet = 'http://www.gutenberg.org/files/1112/1112.txt'
+response = requests.get(Romeo_and_juliet)
+text = response.text
+
+def find_most_common_words(text, n):
+    words = re.findall(r'[a-zA-z]+', text)
+    number_words = list()
+    unique_words = list(set(words))
+    unique_words.remove('s')
+    for term in unique_words:
+        number_words.append((words.count(term), term))
+    number_words.sort(key=lambda i: i[0], reverse=True)
+    return number_words[0:n]
+
+print('The 10 most frequent words are:', find_most_common_words(text, 10))
+#2. Read the cats api and cats_api = 'https://api.thecatapi.com/v1/breeds' and find the avarage weight of a cat in metric units.
+import requests
+import re
+# 2
+cats_api = 'https://api.thecatapi.com/v1/breeds'
+response = requests.get(cats_api)
+cat_information = response.json()
+
+cat_weight = []
+for cat in cat_information:
+    cat_weight.append(cat['weight']['metric'])
+
+pair_weight = []
+for weight in cat_weight:
+    pair_weight.append(re.findall(r'\d+', weight))
+
+weight = []
+for pair in pair_weight:
+    for num in pair:
+        weight.append(int(num))
+
+average = sum(weight) / len(weight)
+print('The average weight of a cat in metric units is:', average)
+#3. Read the countries api and find the 10 largest countries
+
+#4. UCI is one the most common places to get data sets for data science and machine learning. Read the content of UCL (http://mlr.cs.umass.edu/ml/datasets.html). Without additional libraries it will be difficult, so you may try it with BeautifulSoup4

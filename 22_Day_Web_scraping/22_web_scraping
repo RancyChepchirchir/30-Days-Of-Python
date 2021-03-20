@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Mar  7 23:23:42 2021
+
+@author: rancy
+"""
+
+# =============================================================================
+# ## Python Web Scraping
+
+# ## What is Web Scrapping
+# =============================================================================
+
+'''
+The internet is full of huge amount of data which can be used for different purposes. To collect this data we need to know how to scrape data from a website.
+
+Web scraping is the process of extracting and collecting data from websites and storing it on a local machine or in a database.
+
+In this section, we will use beautifulsoup and requests package to scrape data. The package version we are using is beautifulsoup 4.
+
+To start scraping websites you need _requests_, _beautifoulSoup4_ and _website_.
+'''
+
+# pip install requests
+# pip install beautifulsoup4
+
+'''
+To scrape data from websites, basic understanding of HTML tags and css selectors is needed. We target content from a website using HTML tags, classes or/and ids.
+Let's import the requests and BeautifulSoup module
+'''
+
+# Let's declare url variable for the website which we are going to scrape.
+
+import requests
+from bs4 import BeautifulSoup
+url = 'https://visa.educationmalaysia.gov.my/guidelines/travel-authorisation-form-base.html'
+
+# Lets use the requests get method to fetch the data from url
+
+response = requests.get(url)
+# lets check the status
+status = response.status_code
+print(status)      # 200 means the fetching was successful # 500 means the fetching was fail
+
+# Using beautifulSoup to parse(解析) content from the page
+
+response = requests.get(url)
+content = response.content                       # we get all the content from the website
+soup = BeautifulSoup(content, 'html.parser')     # beautiful soup will give a chance to parse
+print(soup.title)                                # <title> Education Malaysia Global Services</title>
+print(soup.title.get_text())                     # Education Malaysia Global Services
+print(soup.body)                                 # gives the whole page on the website
+print(response.status_code)                     # 200

@@ -21,16 +21,16 @@ That is why I created 30 days of python."""
 print(multiline_string)
 
 # String Concatenation
-first_name = 'Asabeneh'
-last_name = 'Yetayeh'
+first_name = 'Rancy'
+last_name = 'Chepchirchir'
 space = ' '
 full_name = first_name  +  space + last_name
-print(full_name) # Asabeneh Yetayeh
+print(full_name) # Rancy Chepchirchir
 # Checking length of a string using len() builtin function
-print(len(first_name))  # 8
-print(len(last_name))   # 7
-print(len(first_name) > len(last_name)) # True
-print(len(full_name)) # 15
+print(len(first_name))  # 5
+print(len(last_name))   # 12
+print(len(first_name) > len(last_name)) # False
+print(len(full_name)) # 18 #including the space
 
 #### Unpacking characters 
 language = 'Python'
@@ -84,6 +84,7 @@ print('Day 2\t3\t5')
 print('Day 3\t3\t5')
 print('Day 4\t3\t5')
 print('This is a back slash  symbol (\\)') # To write a back slash
+print('This is a back slash  symbol (\)')  #same
 print('In every programming language it starts with \"Hello, World!\"')
 
 ## String Methods
@@ -96,7 +97,8 @@ print(challenge.capitalize()) # 'Thirty days of python'
 
 challenge = 'thirty days of python'
 print(challenge.count('y')) # 3
-print(challenge.count('y', 7, 14)) # 1
+print(challenge.count('y', 7, 14)) # 1 from 7th to 14th pos
+print(challenge.count('y', 0, 14))  #2
 print(challenge.count('th')) # 2`
 
 # endswith(): Checks if a string ends with a specified ending
@@ -118,23 +120,25 @@ print(challenge.find('y'))  # 5
 print(challenge.find('th')) # 0
 
 # format()	formats string into nicer output    
-first_name = 'Asabeneh'
-last_name = 'Yetayeh'
-job = 'teacher'
-country = 'Finland'
+first_name = 'Rancy'
+last_name = 'Chepchirchir'
+job = 'freelancer'
+country = 'Kenya'
 sentence = 'I am {} {}. I am a {}. I live in {}.'.format(first_name, last_name, job, country)
 print(sentence) # I am Asabeneh Yetayeh. I am a teacher. I live in Finland.
 
 radius = 10
-pi = 3.14
-area = pi # radius ## 2
+pi = 3.142
+perimeter = 2*pi*radius
+area = pi*(radius)**2 # radius ## 2
 result = 'The area of circle with {} is {}'.format(str(radius), str(area))
-print(result) # The area of circle with 10 is 314.0
+result2 = 'The perimeter of circle with {} is {}'.format(str(radius), str(perimeter))
+print(result, result2) # The area of circle with 10 is 314.0
 
 # index(): Returns the index of substring
 challenge = 'thirty days of python'
-print(challenge.find('y'))  # 5
-print(challenge.find('th')) # 0
+print(challenge.index('y'))  # 5  check for findall() fxn
+print(challenge.index('th')) # 0
 
 # isalnum(): Checks alphanumeric character
 
@@ -156,19 +160,22 @@ challenge = 'thirty days of python'
 print(challenge.isalpha()) # True
 num = '123'
 print(num.isalpha())      # False
+password = 'Rancy123!'
+print(password.isalpha())   # False
 
 # isdecimal(): Checks Decimal Characters
 
-challenge = 'thirty days of python'
-print(challenge.find('y'))  # 5
-print(challenge.find('th')) # 0
+challenge = '30daysofPython'
+print(challenge.isdecimal())  
+password1 = 'Hello World'
+print(password1.isdecimal())
 
 # isdigit(): Checks Digit Characters
 
-challenge = 'Thirty'
-print(challenge.isdigit()) # False
-challenge = '30'
-print(challenge.digit())   # True
+#challenge = 'Thirty'
+#print(challenge.isdigit()) # False
+#challenge = '30'
+#print(challenge.digit())   # True
 
 # isdecimal():Checks decimal characters
 
@@ -209,7 +216,7 @@ print('ten'.isnumeric())    # False
 
 # join(): Returns a concatenated string
 
-web_tech = ['HTML', 'CSS', 'JavaScript', 'React']
+web_tech = ['HTML', 'CSS', 'JavaScript', 'React', 'C++', 'JScript']
 result = '#, '.join(web_tech)
 print(result) # 'HTML# CSS# JavaScript# React'
 
@@ -231,7 +238,7 @@ print(challenge.split()) # ['thirty', 'days', 'of', 'python']
 # title(): Returns a Title Cased String
 
 challenge = 'thirty days of python'
-print(challenge.title()) # Thirty Days Of Python
+print(challenge.title()) # Thirty Days Of Python 
 
 # swapcase(): Checks if String Starts with the Specified String
   

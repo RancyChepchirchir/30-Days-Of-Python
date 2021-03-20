@@ -1,0 +1,230 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Mar  6 05:34:35 2021
+
+@author: rancy
+"""
+
+# =============================================================================
+# ## Conditionals
+
+# By default, statements in python script are executed sequentially from top to bottom. If the processing logic require so, the sequential flow of execution can be altered in two way:
+
+# - Conditional execution: a block of one or more statements will be executed if a certain expression is true
+# - Repetitive execution: a block of one or more statements will be repetitively executed as long as a certain expression is true. In this section, we will cover _if_, _else_, _elif_ statements. The comparison and logical operators we learned in previous sections will be useful here.
+# =============================================================================
+
+
+### If Condition  ;  In python and other programming languages the key word _if_ we use to check if a condition is true and to execute the block code. Remember the indentation after the colon.
+
+#if condition:
+    #this part of code runs for truthy conditions
+    
+a = 3
+if a > 0:
+    print('A is a positive number')
+# A is a positive number
+#As you can see in the example above, 3 is greater than 0. The condition was true and the block code was executed. However, if the condition is false, we do not see the result. In order to see the result of the false condition, we should have another block, which is going to be _else_.
+
+### If Else ; If condition is true the first block will be executed, if not the else condition will run.    
+    
+'''
+if condition:
+    this part of code runs for true conditions
+else:
+     this part of code runs for false conditions
+     
+'''
+
+a = 3
+if a < 0:
+    print('A is a negative number')
+else:
+    print('A is a positive number')
+
+
+# The condition above proves false, therefore the else block was executed. How about if our condition is more than two? We could use _ elif_.
+
+### If Elif Else ; In our daily life, we make decisions on daily basis. We make decisions not by checking one or two conditions but multiple conditions. As similar to life, programming is also full of conditions. We use _elif_ when we have multiple conditions.
+
+'''
+if condition:
+    code
+elif condition:
+    code
+else:
+    code     
+'''
+
+a = 0
+if a > 0:
+    print('A is a positive number')
+elif a < 0:
+    print('A is a negative number')
+else:
+    print('A is zero')  
+    
+
+### Short Hand
+'''
+code if condition else code
+'''
+a = 3
+print('A is positive') if a > 0 else print('A is negative') # first condition met, 'A is positive' will be printed    
+
+### Nested Conditions ; Conditions can be nested
+
+'''
+if condition:
+    code
+    if condition:
+    code
+'''
+
+a = 2
+if a > 0:
+    if a % 2 == 0:
+        print('A is a positive and even integer')
+    else:
+        print('A is a positive number')
+elif a == 0:
+    print('A is zero')
+else:
+    print('A is a negative number')
+
+
+# We can avoid writing nested condition by using logical operator _and_.
+
+### If Condition and Logical Operators
+
+'''
+if condition and condition:
+    code    
+'''
+
+a = 0
+if a > 0 and a % 2 == 0:
+        print('A is an even and positive integer')
+elif a > 0 and a % 2 != 0:
+     print('A is a positive integer')
+elif a == 0:
+    print('A is zero')
+else:
+    print('A is negative')  
+    
+
+### If and Or Logical Operators
+
+'''
+if condition or condition:
+    code    
+'''
+
+user = 'Tyler'
+access_level = 3
+if user == 'admin' or access_level >= 4:
+        print('Access granted!')
+else:
+    print('Access denied!')   
+    
+
+
+## 💻 Exercises: Day 9
+
+#1.  Get user input using input(“Enter your age: ”). If user is 18 or older, give feedback: You are old enough to drive. If below 18 give feedback to wait for the missing amount of years. Output:
+age = int(input('Kindly input your age:'))   
+if age >= 18:
+    print('You are old enough to drive')
+else:
+    print('Wait for {} years'.format(str(18 - age)))   
+    
+    
+#2.  Compare the values of my_age and your_age using if … else. Who is older (me or you)? Use input(“Enter your age: ”) to get the age as input. You can use a nested condition to print 'year' for 1 year difference in age, 'years' for bigger differences, and a custom text if my_age = your_age. Output:
+your_age = int(input('Enter your age: '))
+my_age = int(input('My age: '))
+if your_age - my_age ==1 or my_age - your_age == 1:
+    print('year')
+    if your_age > my_age:
+       print('You\'re older')    
+    elif your_age == my_age:
+       print('twins!')
+    else:
+       print('I\'m older')
+else:
+    print('years')
+    
+
+#3.  Get two numbers from the user using input prompt. If a is greater than b return a is greater than b, if a is less b return a is smaller than b, else a is equal to b. Output:
+a = int(input('Enter the first number: '))
+b = int(input('Enter the second number: '))
+if a > b:
+    print('a is greater than b')
+elif a < b:
+    print('a is smaller than b')
+else:
+    print('a is equal to b')  
+
+#4.  Write a code which gives grade to students according to theirs scores:
+grade = int(input('Enter your grade: '))
+if grade >= 90 and grade <= 100:
+    print('A')
+elif grade >= 70 and grade <= 89:
+    print('B')
+elif grade >= 60 and grade <= 69:
+    print('C')   
+elif grade >= 50 and grade <= 59:
+    print('D')  
+elif grade >= 0 and grade <= 49:
+    print('F')  
+
+
+# 5.  Check if the season is Autumn, Winter, Spring or Summer. If the user input is:
+month = str(input('Enter your birthday month: '))
+if month == 'September' or month == 'October' or month == 'November':
+    print('The season is Autumn')
+elif month == 'December' or month == 'January' or month == 'February':  
+    print('The season is Winter')
+elif month == 'March' or month == 'April' or month == 'May':  
+    print('The season is Spring')
+else:
+    print('The season is Summer')  
+
+
+#6.  The following list contains some fruits:
+fruit = str(input('Enter your favorite fruit: '))
+fruits = ['banana', 'orange', 'mango', 'lemon']
+if fruit in fruits:
+    print('That fruit already exist in the list')
+else:
+    fruits.append(fruit)
+    print(fruits)    
+
+
+#7. Here we have a person dictionary. Feel free to modify it!    
+
+person={
+    'first_name': 'Rancy',
+    'last_name': 'Chepchirchir',
+    'age': 1050,
+    'country': 'Kenya',
+    'is_marred': False,
+    'skills': ['JavaScript', 'React', 'Node', 'MongoDB', 'Python'],
+    'address': {
+        'street': 'Space street',
+        'zipcode': '02210'
+               }
+    }    
+if ['Python'] in person['skills']:
+    print('{}{} has {} skill' .format(str(person['first_name']), str(person['last_name']), str('Python')))
+elif ['JavaScript', 'React'] in person['skills']:
+    print('He is a front end developer')
+elif ['Node', 'Python', 'MongoDB'] in person['skills']:
+    print('He is a backend developer')
+elif ['React', 'Node', 'MongoDB'] in person['skills']:
+    print('He is a fullstack developer')
+else:
+    print('unknown title')    
+
+
+  

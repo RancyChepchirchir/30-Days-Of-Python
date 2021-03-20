@@ -92,7 +92,7 @@ len(tpl)
   first_fruit = fruits[0]
   second_fruit = fruits[1]
   last_index =len(fruits) - 1
-  last_fruit = fruits[las_index]
+  last_fruit = fruits[last_index]
   ```
 
 - Negative indexing
@@ -225,20 +225,41 @@ del fruits
 ## 💻 Exercises: Day 6
 
 1. Create an empty tuple
+   empty_tuuple = ()
 2. Create a tuple containing names of your sisters and your brothers (imaginary siblings are fine)
+   tupl_siz = ('Rancy', 'Sheila', 'Abby')
+   tupl_br = ('Bill', 'Evan')
 3. Join brothers and sisters tuples and assign it to siblings
+   siblings = tupl_siz + tupl_br
 4. How many siblings do you have?
+   len(siblings)
 5. Modify the siblings tuple and add the name of your father and mother and assign it to family_members
+   parents = tuple('Ally', 'JK')
+   family_members = siblings + parents
 6. Unpack siblings and parents from family_members
+   family_members[0:]
 7. Create fruits, vegetables and animal products tuples. Join the three tuples and assign it to a variable called food_stuff_tp.
+   fruits = ('banana', 'mango', 'orange', 'lemon')
+   vegetables = ('brocolli', 'tomato', 'carrot')
+   OR  fruits.extend(vegetables)
+   animal_products = ('milk', 'beef', 'hide')
+   food_stuff_tp = fruits + vegetables + animal_product
+   OR fruits.extend(animal_products)
 8. Change the about food_stuff_tp  tuple to a food_stuff_lt list
+   food_stuff_lt = list(food_stuff_tp)
 9. Slice out the middle item or items from the food_stuff_tp tuple or food_stuff_lt list.
+   mid = (len(food_stuff_lt)-1)/2
+   food_stuff_lt[:mid] or food_stuff_lt[mid:]
 10. Slice out the first three items and the last three items from food_staff_lt list
+    food_stuff_lt[:3]  AND food_stuff_lt[-4:]
 11. Delete the food_staff_tp tuple completely
+    del food_stuff_tp
 12. Check if an item exists in  tuple:
-
+    print('banana' in food_stuff_tp)
 - Check if 'Estonia' is a nordic country
+   print('Estonia' in nordic_countries)
 - Check if 'Iceland' is a nordic country
+   print('Iceland' in nordic_countries)
 
   ```py
   nordic_countries = ('Denmark', 'Finland','Iceland', 'Norway', 'Sweden')

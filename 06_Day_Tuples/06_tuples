@@ -1,0 +1,158 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Mar  6 03:55:04 2021
+
+@author: rancy
+"""
+
+
+# =============================================================================
+# ### Creating a Tuple
+
+### - Empty tuple: Creating an empty tuple
+# =============================================================================
+empty_tuple = ()
+ # or using the tuple constructor
+empty_tuple = tuple()
+
+#- Tuple with initial values
+
+tpl = ('item1', 'item2','item3')
+fruits = ('banana', 'orange', 'mango', 'lemon')
+
+### Tuple length ; We use the _len()_ method to get the length of a tuple.
+
+tpl = ('item1', 'item2', 'item3')
+print(len(tpl))
+
+### Accessing Tuple Items
+
+#- Positive Indexing ; Similar to the list data type we use positive or negative indexing to access tuple items.
+
+tpl = ('item1', 'item2', 'item3')
+first_item = tpl[0]
+second_item = tpl[1]
+
+fruits = ('banana', 'orange', 'mango', 'lemon')
+first_fruit = fruits[0]
+second_fruit = fruits[1]
+last_index =len(fruits) - 1
+last_fruit = fruits[last_index]
+
+#- Negative indexing ; Negative indexing means beginning from the end, -1 refers to the last item, -2 refers to the second last and the negative of the list/tuple length refers to the first item.
+
+tpl = ('item1', 'item2', 'item3','item4')
+first_item = tpl[-4]
+second_item = tpl[-3]
+  
+fruits = ('banana', 'orange', 'mango', 'lemon')
+first_fruit = fruits[-4]
+second_fruit = fruits[-3]
+last_fruit = fruits[-1]
+
+### Slicing tuples ; We can slice out a subtuple by specifying a range of indexes where to start and where to end in the tuple, the return value will be a new tuple with the specified items.
+
+# - Range of Positive Indexes
+
+tpl = ('item1', 'item2', 'item3','item4')
+all_items = tpl[0:4]         # all items
+all_items = tpl[0:]         # all items
+middle_two_items = tpl[1:3]  # does not include item at index 3
+  
+fruits = ('banana', 'orange', 'mango', 'lemon')
+all_fruits = fruits[0:4]    # all items
+all_fruits= fruits[0:]      # all items
+orange_mango = fruits[1:3]  # doesn't include item at index 3
+orange_to_the_rest = fruits[1:]
+
+# - Range of Negative Indexes
+
+tpl = ('item1', 'item2', 'item3','item4')
+all_items = tpl[-4:]         # all items
+middle_two_items = tpl[-3:-1]  # does not include item at index 3 (-1)
+
+fruits = ('banana', 'orange', 'mango', 'lemon')
+all_fruits = fruits[-4:]    # all items
+orange_mango = fruits[-3:-1]  # doesn't include item at index 3
+orange_to_the_rest = fruits[-3:]
+
+### Changing Tuples to Lists ; We can change tuples to lists and lists to tuples. Tuple is immutable if we want to modify a tuple we should change it to a list.
+
+tpl = ('item1', 'item2', 'item3','item4')
+lst = list(tpl)
+fruits = ('banana', 'orange', 'mango', 'lemon')
+fruits = list(fruits)
+fruits[0] = 'apple'
+print(fruits)     # ['apple', 'orange', 'mango', 'lemon']
+fruits = tuple(fruits)
+print(fruits)     # ('apple', 'orange', 'mango', 'lemon')
+
+### Checking an Item in a List ; We can check if an item exists or not in a list using _in_, it returns a boolean.
+
+tpl = ('item1', 'item2', 'item3','item4')
+print('item2' in tpl) # True
+fruits = ('banana', 'orange', 'mango', 'lemon')
+print('orange' in fruits) # True
+print('apple' in fruits) # False
+#fruits[0] = 'apple' # TypeError: 'tuple' object does not support item assignment
+
+### Joining Tuples ; We can join two or more tuples using + operator
+
+tpl1 = ('item1', 'item2', 'item3')
+tpl2 = ('item4', 'item5','item6')
+tpl3 = tpl1 + tpl2
+fruits = ('banana', 'orange', 'mango', 'lemon')
+vegetables = ('Tomato', 'Potato', 'Cabbage','Onion', 'Carrot')
+fruits_and_vegetables = fruits + vegetables
+
+### Deleting Tuples
+
+# It is not possible to remove a single item in a tuple but it is possible to delete the tuple itself using _del_.
+
+tpl1 = ('item1', 'item2', 'item3')
+del tpl1
+fruits = ('banana', 'orange', 'mango', 'lemon')
+del fruits
+
+## 💻 Exercises: Day 6
+
+#1. Create an empty tuple
+empty_tuuple = ()
+#2. Create a tuple containing names of your sisters and your brothers (imaginary siblings are fine)
+tupl_siz = ('Rancy', 'Sheila', 'Abby')
+tupl_br = ('Bill', 'Evan')
+#3. Join brothers and sisters tuples and assign it to siblings
+siblings = tupl_siz + tupl_br
+#4. How many siblings do you have?
+len(siblings)
+#5. Modify the siblings tuple and add the name of your father and mother and assign it to family_members
+parents = ('Ally', 'JK')
+family_members = siblings + parents
+#6. Unpack siblings and parents from family_members
+family_members[0:]
+#7. Create fruits, vegetables and animal products tuples. Join the three tuples and assign it to a variable called food_stuff_tp.
+fruits = ('banana', 'mango', 'orange', 'lemon')
+vegetables = ('brocolli', 'tomato', 'carrot')
+#OR  fruits.extend(vegetables)
+animal_products = ('milk', 'beef', 'hide')
+food_stuff_tp = fruits + vegetables + animal_products
+#OR fruits.extend(animal_products)
+#8. Change the about food_stuff_tp  tuple to a food_stuff_lt list
+food_stuff_lt = list(food_stuff_tp)
+#9. Slice out the middle item or items from the food_stuff_tp tuple or food_stuff_lt list.
+print(len(food_stuff_lt)-1/2)
+print(food_stuff_lt[0:9])
+print(food_stuff_lt[9:-1])
+#10. Slice out the first three items and the last three items from food_staff_lt list
+food_stuff_lt[:3]  
+food_stuff_lt[-4:]
+#11. Delete the food_staff_tp tuple completely
+del food_stuff_tp
+#12. Check if an item exists in  tuple:
+#print('banana' in food_stuff_tp)   # error
+#- Check if 'Estonia' is a nordic country
+nordic_countries = ('Denmark', 'Finland','Iceland', 'Norway', 'Sweden')
+print('Estonia' in nordic_countries)
+#- Check if 'Iceland' is a nordic country
+print('Iceland' in nordic_countries)

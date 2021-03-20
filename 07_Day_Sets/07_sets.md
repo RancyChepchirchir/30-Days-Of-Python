@@ -78,7 +78,7 @@ We use **len()** method to find the length of a set.
 ```py
 # syntax
 st = {'item1', 'item2', 'item3', 'item4'}
-len(set)
+len(st)
 ```
 
 **Example:**
@@ -106,7 +106,7 @@ print("Does set st contain item3? ", 'item3' in st) # Does set st contain item3?
 
 ```py
 fruits = {'banana', 'orange', 'mango', 'lemon'}
-'mango' in fruits
+print('mango' in fruits)
 ```
 
 ### Adding Items to a Set
